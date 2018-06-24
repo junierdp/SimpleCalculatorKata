@@ -1,0 +1,6 @@
+=== BUILD TARGET SimpleCalculatorKata OF PROJECT SimpleCalculatorKata WITH THE DEFAULT CONFIGURATION (Release) ===
+
+Check dependencies
+Code Signing Error: Signing for "SimpleCalculatorKata" requires a development team. Select a development team in the project editor.
+Code Signing Error: Code signing is required for product type 'Application' in SDK 'iOS 11.4'
+
