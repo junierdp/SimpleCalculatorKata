@@ -8,25 +8,38 @@
 
 import Foundation
 
-struct Calculator {
+class Calculator {    
     func calculate(number1: Any, number2: Any, lOperator: String) -> Any {
         
-        guard let _number1: Int = number1 as? Int, let _number2: Int = number2 as? Int else {
+        if self.isValidNumbers(number1: number1, number2: number2) && self.isValidOperator(lOperator: lOperator) {
+            let expresion = NSExpression.init(format: "\(number1)\(lOperator)\(number2)")
+            if let result: Int = expresion.expressionValue(with: nil, context: nil) as? Int {
+                return result
+            } else {
+                return "unknown value"
+            }
+        } else {
             return "unknown value"
+        }
+    }
+    
+    private func isValidOperator(lOperator: String) -> Bool {
+        
+        if lOperator == "+" || lOperator == "-" || lOperator == "/" || lOperator == "*" {
+            return true
         }
         
-        switch lOperator {
-        case "*":
-            return _number1 * _number2
-        case "+":
-            return _number1 + _number2
-        case "-":
-            return _number1 - _number2
-        case "/":
-            return _number1 / _number2
-        default:
-            return "unknown value"
+        return false
+    }
+    
+    private func isValidNumbers(number1: Any, number2: Any) -> Bool {
+        
+        guard let _: Int = number1 as? Int, let _: Int = number2 as? Int else {
+            return false
         }
+        
+        return true
+        
     }
     
     func evenOrOdd(values: [Int]) -> String {
